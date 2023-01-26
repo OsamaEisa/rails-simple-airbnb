@@ -1,0 +1,29 @@
+<h1 class="text-center mt-3 mb-5">All Flats</h1>
+<div class="row">
+<% @flats.each do |flat| %>
+<div class="col-md-4">
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= flat.name %></h5>
+    <p class="card-text">
+      <strong>Address:</strong> <%= flat.address %><br>
+      <strong>Description:</strong> <%= flat.description %>
+    </p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>Price per night:</strong> <%= flat.price_per_night %>
+      </li>
+      <li class="list-group-item">
+        <strong>Number of guests:</strong> <%= flat.number_of_guests %>
+      </li>
+      <li class="list-group-item">
+        <%= link_to "More info", flat_path(flat), class: "link-primary mt-2" %>
+        <%= link_to "Edit", edit_flat_path(flat), class: "link-warning mt-2" %>
+        <%= link_to "Delete", flat_path(flat), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "link-danger mt-2" %>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
